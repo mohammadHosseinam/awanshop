@@ -43,4 +43,16 @@ const handelCreateProduct = async (req, res) => {
     res.status(201).json({ massage: "Product saved sucessfully!?" })
 }
 
-module.exports = { handelShowPtoduct, handelCreateProduct }
+const handelShowPopularPtoducts = async (req, res) => {
+        const popProducts = await Product.find({ ispopular: true})
+        if(!popProducts) return res.status(404).json({ massage: "404: product not founded" })
+        return res.status(200).json({popProducts})
+}
+
+const handelShowSectionPtoducts = async (req, res) => {
+    const popProducts = await Product.find({ section: section.includes(req.body.section)})
+    if(!popProducts) return res.status(404).json({ massage: "404: product not founded" })
+    return res.status(200).json({popProducts})
+}
+
+module.exports = { handelShowPtoduct, handelCreateProduct , handelShowPopularPtoducts , handelShowPopularPtoducts}
