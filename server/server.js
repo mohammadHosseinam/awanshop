@@ -25,7 +25,22 @@ app.use(fileUpload({
 mongoose.connect(process.env.DATABASE_URL , {authSource : "admin" }).then((res) => {
    console.log("DB conected Ok!")
 })
-
+app.use('/api',require('./routes').loginRoute)
+app.use('/api',require('./routes').signInRoute)
+app.use('/api',require('./routes').createProductRoute)
+app.use('/api',require('./routes').showProductRoute)
+app.use('/api',require('./routes').popularProductsRoute)
+app.use('/api',require('./routes').sectionProductsRoute)
+app.use('/api',require('./routes').createCommentRoute)
+app.use('/api',require('./routes').showCommentsRoute)
+app.use('/api',require('./routes').createOrderRoute)
+app.use('/api',require('./routes').showeAllUserOrdersRoute)
+app.use('/api',require('./routes').showUnsendUserOrdersRoute)
+app.use('/api',require('./routes').showRejectedUserOrdersRoute)
+app.use('/api',require('./routes').updateOrderStatusRoute)
+app.use('/api',require('./routes').showAllOrdersRoute)
+app.use('/api',require('./routes').showUnsendOrdersRoute)
+app.use('/api',require('./routes').showReturnedOrdersRoute)
 app.get('/', (req, res) => {
     res.send('Hello World!')
   })
