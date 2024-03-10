@@ -1,6 +1,6 @@
 const { Order } = require("../../model/Order");
 
-const showUnsentOrdersHandeler = async (req , res) => {
+const showUnsendOrdersHandeler = async (req , res) => {
     const unsenededOrders = await Order.find({status : "unsend"})
     if (!unsenededOrders) return res.status(404).json({ massage: "سفارش جدیدی پیدا نشد" })
     return res.status(200).json({unsenededOrders})
@@ -26,4 +26,4 @@ const updateOrderStatusHandeler = async(req , res) => {
     return res.status(200).json({message : "سفارش با موفقیت آپدیت شد"})
 }
 
-module.exports = { showAllOrdersHandeler , showUnsentOrdersHandeler , showReturnedOrdersHandeler , updateOrderStatusHandeler}
+module.exports = { showAllOrdersHandeler , showUnsendOrdersHandeler , showReturnedOrdersHandeler , updateOrderStatusHandeler}

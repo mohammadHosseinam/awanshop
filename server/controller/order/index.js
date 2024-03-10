@@ -20,7 +20,7 @@ const handelCreateOrder = async (req, res) => {
     res.status(201).json({ massage: "سفارش شما با موفقیت ثبت شد" })
 }
 
-const handelShoweAllUserOrders = async (req, res) => {
+const handelShowAllUserOrders = async (req, res) => {
     const decodedToken = JWT.decode(req.headers.authorization, process.env.SECRETKEY)
     const user = await User.findOne({ _id: decodedToken.userId })
     const allOrders = await Order.find({ idOfProduct: user._id })
@@ -28,7 +28,7 @@ const handelShoweAllUserOrders = async (req, res) => {
     res.status(200).json({ allOrders })
 }
 
-const handelShoweUnsendUserOrders = async (req, res) => {
+const handelShowUnsendUserOrders = async (req, res) => {
     const decodedToken = JWT.decode(req.headers.authorization, process.env.SECRETKEY)
     const user = await User.findOne({ _id: decodedToken.userId })
     const allOrders = await Order.find({ idOfProduct: user._id , status : "unsend"})
@@ -36,7 +36,7 @@ const handelShoweUnsendUserOrders = async (req, res) => {
     res.status(200).json({ allOrders })
 }
 
-const handelShoweRejectedUserOrders = async (req, res) => {
+const handelShowRejectedUserOrders = async (req, res) => {
     const decodedToken = JWT.decode(req.headers.authorization, process.env.SECRETKEY)
     const user = await User.findOne({ _id: decodedToken.userId })
     const allOrders = await Order.find({ idOfProduct: user._id , status : "rejected"})
@@ -44,4 +44,4 @@ const handelShoweRejectedUserOrders = async (req, res) => {
     res.status(200).json({ allOrders })
 }
 
-module.exports = { handelShoweAllUserOrders , handelCreateOrder , handelShoweUnsendUserOrders , handelShoweRejectedUserOrders}
+module.exports = { handelShowAllUserOrders , handelCreateOrder , handelShowUnsendUserOrders , handelShowRejectedUserOrders}
