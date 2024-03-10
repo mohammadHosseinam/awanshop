@@ -9,6 +9,10 @@ export default {
       fontFamily : {
         vazirmatn : ['Vazirmatn']
       },
+      colors:{
+        secoundry : "#2951E0",
+        fafafa : '#fafafa',
+      }
     },
   },
   plugins: [],
