@@ -6,6 +6,7 @@ import DiscountIcon from '../../assets/icons/discountIcon/index.jsx'
 import ChangeIcon from '../../assets/icons/changeIcon/index.jsx'
 import BoxIcon from '../../assets/icons/boxIcon/index.jsx'
 import ProductCard from '../../components/ProductCard/index.jsx'
+import Sections from './sections/index.jsx'
 function Home() {
     return (
         <>
@@ -43,6 +44,7 @@ function Home() {
                    <ProductCard/>
                 </div>
             </div>
+            <Sections/>
         </>
     )
 }
