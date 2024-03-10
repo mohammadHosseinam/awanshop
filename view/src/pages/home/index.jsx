@@ -19,32 +19,46 @@ function Home() {
 
             <div className='flex items-center justify-evenly py-5'>
                 <div className='flex flex-col items-center'>
-                    <TrukIcon/>
+                    <TrukIcon />
                     <h4 className='text-sm text-slate-800 font-vazirmatn font-medium mt-1'>ارسال سریع</h4>
                 </div>
                 <div className='flex flex-col items-center'>
-                    <DiscountIcon/>
+                    <DiscountIcon />
                     <h4 className='text-sm text-slate-800 font-vazirmatn font-medium  mt-1'>قیمت شگفت انگیز</h4>
                 </div>
                 <div className='flex flex-col items-center'>
-                    <ChangeIcon/>
+                    <ChangeIcon />
                     <h4 className='text-sm text-slate-800 font-vazirmatn font-medium mt-1'>امکان تعویض</h4>
                 </div>
             </div>
 
             <div className='w-full h-60 bg-green-300 flex items-center'>
-                <div className='flex flex-col items-center w-16 mr-8'>
+                <div className='flex flex-col items-center w-16 mr-8 ml-2'>
                     <h3 className='text-secoundry font-vazirmatn font-medium w-16 text-center pb-2'>محصولات پرفروش</h3>
-                    <BoxIcon/>
+                    <BoxIcon />
                 </div>
-                <div className='flex flex-shrink-1 overflow-x-scroll'>
-                   <ProductCard/>
-                   <ProductCard/>
-                   <ProductCard/>
-                   <ProductCard/>
+                <div className='flex flex-shrink-1 overflow-x-scroll gap-4 scrollbar-hide'>
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </div>
             </div>
-            <Sections/>
+            <Sections />
+            <h4 className="font-vazirmatn text-md text-neutral-800 text-center mt-5 mb-4 font-medium">شلوار های زنانه</h4>
+            <div className='flex flex-shrink-1 overflow-x-scroll mr-4 gap-4 scrollbar-hide'>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </div>
+            <h4 className="font-vazirmatn text-md text-neutral-800 text-center mt-5 mb-4 font-medium">شلوار های مردانه</h4>
+            <div className='flex flex-shrink-1 overflow-x-scroll mr-4 gap-4 mb-4 scrollbar-hide'>
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+                <ProductCard />
+            </div>
         </>
     )
 }
