@@ -4,6 +4,7 @@ import productImage from "../../assets/images/product.jpg"
 import StarIcon from '../../assets/icons/starIcon'
 import ColorButton from '../../components/ColorButton'
 import SizeButton from '../../components/SizeButton'
+import ProductAttrebute from '../../components/ProductAttrebute'
 function Product() {
     return (
         <>
@@ -38,7 +39,14 @@ function Product() {
                     <SizeButton size={46} color="#000" />
                     <SizeButton size={48} color="#000" />
                 </div>
-
+                <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>مشخصات</h5>
+                <div className='flex gap-2 flex-wrap mr-3'>
+                    <ProductAttrebute attrebut="جنس" value="جین" />
+                    <ProductAttrebute attrebut="استایل" value="اسکینی" />
+                    <ProductAttrebute attrebut="برند" value="old navy" />
+                    <ProductAttrebute attrebut="فاق" value="متوسط" />
+                    <ProductAttrebute attrebut="ضخامت" value="نازک" />
+                </div>
             </div>
             <div>
 
