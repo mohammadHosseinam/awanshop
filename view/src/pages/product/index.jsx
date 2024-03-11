@@ -5,6 +5,8 @@ import StarIcon from '../../assets/icons/starIcon'
 import ColorButton from '../../components/ColorButton'
 import SizeButton from '../../components/SizeButton'
 import ProductAttrebute from '../../components/ProductAttrebute'
+import Comment from '../../components/Comment'
+import CreatComment from './creatComment'
 function Product() {
     return (
         <>
@@ -47,6 +49,15 @@ function Product() {
                     <ProductAttrebute attrebut="فاق" value="متوسط" />
                     <ProductAttrebute attrebut="ضخامت" value="نازک" />
                 </div>
+                <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>نظرات</h5>
+                <div className='flex overflow-x-scroll scrollbar-hidden mb-3 gap-2'>
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>   
+                </div>
+                <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>ثبت نظر</h5>
+                <CreatComment/>
             </div>
             <div>
 
