@@ -1,6 +1,7 @@
 import  Home  from "../pages/home/index.jsx";
 import Login from "../pages/login/index.jsx";
 import Product from "../pages/product/index.jsx";
+import SignIn from "../pages/signin/index.jsx";
 
 export const routes = {
     home:{
@@ -17,6 +18,11 @@ export const routes = {
         id:"3",
         path:"/login",
         element:<Login/>
+    },
+    signIn:{
+        id:"4",
+        path:"/signIn",
+        element:<SignIn/>
     },
 
     
