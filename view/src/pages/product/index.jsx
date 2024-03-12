@@ -7,11 +7,13 @@ import SizeButton from '../../components/SizeButton'
 import ProductAttrebute from '../../components/ProductAttrebute'
 import Comment from '../../components/Comment'
 import CreatComment from './creatComment'
+import ProductCard from '../../components/ProductCard'
+import PrimaryButton from '../../components/PrimaryButton'
 function Product() {
     return (
         <>
             <Header />
-            <div style={{ height: "calc(100vh - 148px)" }} className='overflow-y-scroll scrollbar-hidden px-6 pt-6'>
+            <div style={{ height: "calc(100vh - 144px)" }} className='overflow-y-scroll scrollbar-hidden px-6 pt-6'>
                 <img className='rounded shadow-sm w-full' src={productImage} alt="Product Image" />
                 <div className='mt-7 flex justify-between px-1'>
                     <h1 className='text-xl font-vazirmatn text-neutral-800 font-medium'>شلوار اسکینی old navy</h1>
@@ -51,16 +53,27 @@ function Product() {
                 </div>
                 <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>نظرات</h5>
                 <div className='flex overflow-x-scroll scrollbar-hidden mb-3 gap-2'>
-                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
-                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
-                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>
-                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم"/>   
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم" />
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم" />
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم" />
+                    <Comment name="محمد" rating="4" title="کیفیت عالی و قیمت مناسب" desc="من سایز ۴۲ هستم با توجه به نظرات دوستان سایز ۴۴ گرفتم ولی باز هم کوچک و تنگ بود هم قدش کوتاه بود قدش ۹۰ سانته مرجوع کردم" />
                 </div>
                 <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>ثبت نظر</h5>
-                <CreatComment/>
+                <CreatComment />
+                <h5 className='text-sm font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>محصولات مشابه</h5>
+                <div className='flex flex-shrink-1 overflow-x-scroll gap-4 scrollbar-hide mb-2'>
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                </div>
             </div>
-            <div>
-
+            <div className='flex px-6 items-center h-16 shadow-inner'>
+                <div className="grow">
+                    <PrimaryButton text="افزودن به سبد خرید" click={() => { console.log("add to basket") }} />
+                </div>
+                <p style={{fontSize:"10px"}} className='font-vazirmatn font-light text-slate-900'>تومان</p>
+                <h2 className='mr-1 font-vazirmatn font-medium text-base text-slate-900'>450000</h2>
             </div>
         </>
     )
