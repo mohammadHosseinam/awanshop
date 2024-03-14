@@ -4,6 +4,7 @@ import  Home  from "../pages/home/index.jsx";
 import Login from "../pages/login/index.jsx";
 import Product from "../pages/product/index.jsx";
 import SignIn from "../pages/signin/index.jsx";
+import SuccessPayment from "../pages/successPayment/index.jsx";
 
 export const routes = {
     home:{
@@ -35,6 +36,11 @@ export const routes = {
         id:"6",
         path:"/creatProduct",
         element:<CreatProduct/>
+    },
+    successPayment:{
+        id:"7",
+        path:"/successPayment",
+        element:<SuccessPayment/>
     },
     
 }
