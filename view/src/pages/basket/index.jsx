@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../../layout/header'
 import PrimaryButton from '../../components/PrimaryButton'
 import BasketCard from './BasketCard'
+import OrderProductCart from '../../components/OrderProductCart'
 
 function Basket() {
     return (
@@ -13,7 +14,7 @@ function Basket() {
                     <BasketCard/>
                     <BasketCard/>
                     <BasketCard/>
-                    <BasketCard/>
+                    <OrderProductCart/>
                 </div>
             </div>
             <div className='flex px-6 items-center h-16 shadow-inner z-10 bg-white'>

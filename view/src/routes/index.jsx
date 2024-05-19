@@ -1,3 +1,4 @@
+import AdminPanel from "../pages/admin/index.jsx";
 import Basket from "../pages/basket/index.jsx";
 import ComplitOrder from "../pages/complitOrder/index.jsx";
 import CreatProduct from "../pages/creatProduct/index.jsx";
@@ -48,5 +49,9 @@ export const routes = {
         path:"/basket",
         element:<Basket/>
     },
-    
+    AdminPanel:{
+        id:"9",
+        path:"/adminPanel",
+        element:<AdminPanel/>
+    }
 }
