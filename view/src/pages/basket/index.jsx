@@ -2,22 +2,29 @@ import React from 'react'
 import Header from '../../layout/header'
 import PrimaryButton from '../../components/PrimaryButton'
 import BasketCard from './BasketCard'
-
+import EmptyBasketIcon from '../../assets/icons/emptyBasketIcon'
 
 function Basket() {
     return (
         <div>
             <Header />
-            <div style={{ height: "calc(100vh - 144px)"}} className='pt-5 px-10 sm:px-12 md:px-24 lg:px-36 xl:px-48 overflow-scroll scrollbar-hide'>
+            <div style={{ height: "calc(100vh - 144px)" }} className='pt-5 px-10 sm:px-12 md:px-24 lg:px-36 xl:px-48 overflow-scroll scrollbar-hide'>
                 <h1 className='font-vazirmatn text-xs sm:text-sm md:text-base md:font-medium  text-slate-900 font-semibold mb-1'>سبد خرید شما</h1>
-                <div style={{boxShadow : "0px 1px 4px rgba(0, 0, 0, 0.15)",borderRadius :"6px" , minHeight:"calc(100% - 35px)"}} className='flex flex-col gap-3 p-3'>
+                <div style={{ boxShadow: "0px 1px 4px rgba(0, 0, 0, 0.15)", borderRadius: "6px", minHeight: "calc(100% - 35px)" }} className='flex flex-col justify-center items-center gap-3 p-3'>
+                    <div className='flex flex-col justify-center items-center'>
+                        <EmptyBasketIcon />
+                        <h1 className='font-vazirmatn font-medium text-sm text-slate-900'>سبد خرید شما خالی است!</h1>
+                    </div>
+                    {/* <BasketCard/>
                     <BasketCard/>
-                    <BasketCard/>
-                    <BasketCard/>
+                    <BasketCard/> */}
                 </div>
             </div>
             <div className='flex px-8 sm:px-10 md:px-12 lg:px-24 xl:px-32 items-center h-16 shadow-inner z-10 bg-white'>
                 <div className="grow">
+                    <PrimaryButton text="برگشت به فروشگاه" click={() => { console.log("add to basket") }} />
+                </div>
+                {/* <div className="grow">
                     <PrimaryButton text="تایید و تکمیل خرید" click={() => { console.log("add to basket") }} />
                 </div>
                 <div className=' \'>
@@ -26,7 +33,7 @@ function Basket() {
                         <p style={{ fontSize: "10px" }} className='font-vazirmatn font-light text-slate-900'>تومان</p>
                         <h2 className='mr-1 font-vazirmatn font-medium text-base text-slate-900'>450000</h2>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
