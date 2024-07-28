@@ -5,7 +5,7 @@ import OrderProductCart from '../../../components/OrderProductCart'
 
 function OrderCardAdmin({ code = "34567897", name = "محمد حسین احمدیان", phoneNumber = "09032153600", address = "کاخ سعداباد", postCode = "1234567", products = [] }) {
   return (
-    <div className='rounded-lg shadow p-3 bg-fafafa w-72 m-auto mt-3'>
+    <div className='rounded-lg shadow p-3 bg-fafafa w-72 sm:w-80 md:w-96 lg:w-1/3 m-auto mt-3'>
       <div className='flex items-center justify-between'>
         <div className='flex gap-2'>
           <p className='font-vazirmatn font-medium text-xs'>کد رهگیری:</p>
