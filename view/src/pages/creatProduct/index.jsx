@@ -8,7 +8,7 @@ function CreatProduct() {
     return (
         <div>
             <Header />
-            <div className='mx-5 flex flex-col justify-center mb-4'>
+            <div className='mx-10 sm:mx-16 md:mx-28 lg:mx-36 xl:mx-60 flex flex-col justify-center mb-4'>
                 <h1 className='font-vazirmatn text-xs text-slate-900 font-medium mb-3 mt-4'>ساخت محصول</h1>
                 <div className='p-5 rounded-lg shadow'>
                     <TextFieild label="نام محصول" />
