@@ -6,7 +6,7 @@ function Login() {
     return (
         <div className='h-screen flex flex-col justify-center'>
             <img className='w-16 h-16 mx-auto' src={logo} alt="logo image" />
-            <div className='m-12 h-fit'>
+            <div className='m-12 mx-auto w-3/4 md:w-1/2 xl:w-1/3 h-fit'>
                 <TextFieild label="نام کاربری" />
                 <TextFieild label="رمز عبور" />
                 <div className="w-fit mx-auto mt-5">
