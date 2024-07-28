@@ -2,7 +2,7 @@ import React from 'react'
 import image from "../../assets/images/product.jpg"
 import ColorButton from '../ColorButton'
 
-function OrderProductCart() {
+function OrderProductCart({img="" , name="" , count="" , color="",size="" , price=""}) {
     return (
         <div className='rounded flex  text-center'>
             <div className='w-20 h-20 shrink-0'>

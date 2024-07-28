@@ -12,6 +12,7 @@ export default {
       colors:{
         secoundry : "#2951E0",
         fafafa : '#fafafa',
+        primary:"rgba(75, 225, 163, 0.878)"
       }
     },
   },
