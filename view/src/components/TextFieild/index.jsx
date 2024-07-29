@@ -3,7 +3,7 @@ import React from 'react'
 function TextFieild({label ,placeholder}) {
   return (
     <div>
-        <label htmlFor="small-input" className="block mb-2  mt-3 text-sm font-vazirmatn font-normal text-gray-900">
+        <label htmlFor="small-input" className="block mb-2  mt-3 text-sm md:text-base font-vazirmatn font-normal text-gray-900">
         {label}
         </label>
         <input

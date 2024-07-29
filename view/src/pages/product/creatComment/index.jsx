@@ -7,7 +7,7 @@ import TextFieild from '../../../components/TextFieild'
 
 function CreatComment() {
   return (
-    <div className='mx-3'>
+    <div className='mx-3 mb-2 sm:w-96 lg:w-1/3'>
       <TextFieild label="نام کاربری" placeholder=" "/>
       <TextFieild label="تیتر" placeholder=" "/>
       <Texterea label="توضیحات"/>

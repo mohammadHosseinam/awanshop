@@ -3,7 +3,7 @@ import TickIcon from '../../assets/icons/TickIcon'
 
 function ColorButton({color , size="24px"}) {
   return (
-    <button style={{backgroundColor : color , width : size , height : size}} className='border-none rounded-full flex justify-center items-center w-6 h-6'>
+    <button style={{backgroundColor : color , width : size , height : size}} className='border-none rounded-full flex justify-center items-center w-6 h-6 shadow-md'>
         <TickIcon/>
     </button>
   )
