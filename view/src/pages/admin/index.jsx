@@ -4,6 +4,7 @@ import UserIcon from '../../assets/icons/userIcon'
 import PrimaryInlineButton from '../../components/PrimaryInlineButton'
 import OrderCardAdmin from './OrderCardAdmin'
 import Footer from '../../layout/footer'
+import { Link } from 'react-router-dom'
 
 function AdminPanel() {
     return (
@@ -17,7 +18,9 @@ function AdminPanel() {
                         <p style={{ fontSize: "10px" }} className='font-vazirmatn font-light text-gray-500'>09032153600</p>
                     </div>
                 </div>
-                <PrimaryInlineButton text="ساخت محصول جدید" click={()=>{console.log("clicked")}} className="border border-black text-black py-1 text-xs px-3"/>
+                <Link to="/creatProduct">
+                    <PrimaryInlineButton text="ساخت محصول جدید" click={() => { console.log("clicked") }} className="border border-black text-black py-1 text-xs px-3" />
+                </Link>
             </div>
             <div className='w-3/4 sm:w-2/3 md:w-1/2 lg:w-2/4 mx-auto flex justify-between'>
                 <button className='font-vazirmatn font-medium text-xs'>ارسال نشده ها</button>
@@ -25,10 +28,10 @@ function AdminPanel() {
                 <button className='font-vazirmatn font-medium text-xs'>مرجوعی ها</button>
             </div>
             <div>
-                <OrderCardAdmin/>
-                <OrderCardAdmin/>
+                <OrderCardAdmin />
+                <OrderCardAdmin />
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

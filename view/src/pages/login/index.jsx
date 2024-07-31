@@ -2,6 +2,7 @@ import React from 'react'
 import TextFieild from '../../components/TextFieild'
 import PrimaryButton from '../../components/PrimaryButton'
 import logo from "../../assets/images/awanLogo.png"
+import { Link } from 'react-router-dom'
 function Login() {
     return (
         <div className='h-screen flex flex-col justify-center'>
@@ -14,7 +15,7 @@ function Login() {
                 </div>
                 <div className='flex gap-2 w-fit mx-auto mt-3'>
                     <p style={{fontSize:"10px"}} className='font-vazirmatn text-slate-900 font-medium'>حساب کاربری ندارید؟</p>
-                    <a style={{color : "#5C99F4"}} href="#" className='font-vazirmatn font-semibold text-xs'>ساخت حساب</a>
+                    <Link style={{color : "#5C99F4"}} to="/signIn" className='font-vazirmatn font-semibold text-xs'>ساخت حساب</Link>
                 </div>
             </div>
         </div>

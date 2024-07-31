@@ -2,6 +2,7 @@ import React from 'react'
 import TextFieild from '../../components/TextFieild'
 import PrimaryButton from '../../components/PrimaryButton'
 import logo from "../../assets/images/awanLogo.png"
+import { Link } from 'react-router-dom'
 
 function SignIn() {
     return (
@@ -17,7 +18,7 @@ function SignIn() {
                 </div>
                 <div className='flex gap-1 items-center w-fit mx-auto mt-3'>
                     <p style={{ fontSize: "10px" }} className='font-vazirmatn text-slate-900 font-medium'>حساب کاربری دارید؟</p>
-                    <a style={{ color: "#5C99F4" }} href="#" className='font-vazirmatn font-semibold text-xs'>ورود حساب</a>
+                    <Link style={{ color: "#5C99F4" }} to="/login" className='font-vazirmatn font-semibold text-xs'>ورود حساب</Link>
                 </div>
             </div>
         </div>

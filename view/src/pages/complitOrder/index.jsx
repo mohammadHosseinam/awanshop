@@ -3,6 +3,7 @@ import Header from '../../layout/header'
 import Texterea from '../../components/Texterea'
 import TextFieild from '../../components/TextFieild'
 import PrimaryButton from '../../components/PrimaryButton'
+import { Link } from 'react-router-dom'
 
 function ComplitOrder() {
     return (
@@ -19,7 +20,9 @@ function ComplitOrder() {
             </div>
             <div className='flex px-8 sm:px-10 md:px-12 lg:px-24 xl:px-32 items-center h-16 shadow-inner'>
                 <div className="grow">
+                    <Link to="/">
                     <PrimaryButton text="پرداخت" click={() => { console.log("add to basket") }} />
+                    </Link>
                 </div>
                 <div>
                     <p className='font-vazirmatn text-xs mb-2 text-end text-slate-400'>جمع سبد خرید</p>

@@ -3,6 +3,7 @@ import Header from '../../layout/header'
 import PrimaryButton from '../../components/PrimaryButton'
 import BasketCard from './BasketCard'
 import EmptyBasketIcon from '../../assets/icons/emptyBasketIcon'
+import { Link } from 'react-router-dom'
 
 function Basket() {
     return (
@@ -22,7 +23,9 @@ function Basket() {
             </div>
             <div className='flex px-8 sm:px-10 md:px-12 lg:px-24 xl:px-32 items-center h-16 shadow-inner z-10 bg-white'>
                 <div className="grow">
-                    <PrimaryButton text="برگشت به فروشگاه" click={() => { console.log("add to basket") }} />
+                    <Link to="/">
+                        <PrimaryButton text="برگشت به خانه" click={() => { console.log("add to basket") }} />
+                    </Link>
                 </div>
                 {/* <div className="grow">
                     <PrimaryButton text="تایید و تکمیل خرید" click={() => { console.log("add to basket") }} />
