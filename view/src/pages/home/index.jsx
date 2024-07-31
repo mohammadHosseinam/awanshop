@@ -8,6 +8,7 @@ import BoxIcon from '../../assets/icons/boxIcon/index.jsx'
 import ProductCard from '../../components/ProductCard/index.jsx'
 import Sections from './sections/index.jsx'
 import Footer from '../../layout/footer/index.jsx'
+
 function Home() {
     return (
         <>

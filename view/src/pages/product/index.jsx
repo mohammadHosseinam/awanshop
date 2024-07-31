@@ -60,7 +60,7 @@ function Product() {
                 <h5 className='text-sm sm:text-base md:text-xl lg:text-2xl  font-vazirmatn font-medium text-neutral-800 mt-3 mb-4 mr-2'>محصولات مشابه</h5>
                 <div className='flex flex-shrink-1 overflow-x-scroll gap-4 scrollbar-hide mb-2'>
                 <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 px-3 sm:px-3">
-                        <ProductCard />
+                        <ProductCard click={()=>{}}/>
                     </div>
                     <div className="sm:w-1/2 md:w-1/3 lg:w-1/4 flex-shrink-0 px-3 sm:px-3">
                         <ProductCard />
