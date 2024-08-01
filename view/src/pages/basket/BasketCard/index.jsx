@@ -23,7 +23,7 @@ function BasketCard() {
                 <h4 className='font-vazirmatn text-base'>شلوار اسکینی old navy</h4>
                 <div className='flex items-center gap-2'>
                     <p className='font-vazirmatn text-xs'>رنگ :</p>
-                    <ColorButton color={"#4743DE"} size="18px" />
+                    <ColorButton color={"#4743DE"} />
                 </div>
                 <div className='flex items-center gap-2'>
                     <span className='font-vazirmatn text-xs'>سایز :</span>

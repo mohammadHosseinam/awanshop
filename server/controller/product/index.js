@@ -27,7 +27,8 @@ const handelCreateProduct = async (req, res) => {
     if (!req.body.style) return res.status(400).json({ massage: "استایل محصول را وارد کنید" })
     if (!req.body.brand) return res.status(400).json({ massage: "برند محصول را وارد کنید" })
     if (!req.body.fagh) return res.status(400).json({ massage: "فاق محصول را وارد کنید" })
-    if (!req.body.colors) return res.status(400).json({ massage: "رنگ های محصول را وارد کنید" })
+    if (!req.body.colorName) return res.status(400).json({ massage: "نام رنگ محصول را وارد کنید" })
+    if (!req.body.colorName) return res.status(400).json({ massage: "رنگ محصول را انتخاب کنید" })
     if (!req.files.mainPicture) return res.status(400).json({ massage: "عکس اصلی محصول را وارد کنید" })
     if (!req.files.otherPictures) return res.status(400).json({ massage: "عکس های دیگر محصول را وارد کنید" })
 

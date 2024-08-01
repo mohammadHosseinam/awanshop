@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../layout/header'
 import productImage from "../../assets/images/product.jpg"
 import StarIcon from '../../assets/icons/starIcon'
@@ -10,6 +10,7 @@ import CreatComment from './creatComment'
 import ProductCard from '../../components/ProductCard'
 import PrimaryButton from '../../components/PrimaryButton'
 function Product() {
+    const [size , setSize] = useState("36")
     return (
         <>
             <Header />
@@ -33,16 +34,16 @@ function Product() {
                         <div>
                             <div className='flex gap-2 mt-4 mx-2'>
                                 <p className='text-base lg:text-xl font-vazirmatn font-medium text-neutral-800'>سایز :</p>
-                                <h2 className='text-lg lg:text-lg font-vazirmatn font-medium text-neutral-800'>42</h2>
+                                <h2 className='text-lg lg:text-lg font-vazirmatn font-medium text-neutral-800'>{size}</h2>
                             </div>
                             <div className='flex gap-1 mr-5 my-2'>
-                                <SizeButton size={36} color="#000" />
-                                <SizeButton size={38} color="#000" />
-                                <SizeButton size={40} color="#000" />
-                                <SizeButton size={42} color="#44DCAE" />
-                                <SizeButton size={44} color="#000" />
-                                <SizeButton size={46} color="#000" />
-                                <SizeButton size={48} color="#000" />
+                                <SizeButton click={()=>{setSize("36")}} size={36} color={size == 36?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("38")}} size={38} color={size == 38?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("40")}} size={40} color={size == 40?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("42")}} size={42} color={size == 42?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("44")}} size={44} color={size == 44?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("46")}} size={46} color={size == 46?"#44DCAE":"#000"} />
+                                <SizeButton click={()=>{setSize("48")}} size={48} color={size == 48?"#44DCAE":"#000"} />
                             </div>
                         </div>
                         <div>
