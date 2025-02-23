@@ -16,7 +16,7 @@ function Header() {
             <Link to="/basket"><BasketIcon /></Link>
             <Link to="/adminPanel"><UserIcon /></Link>
                 
-                
+
             </div>
         </div>
     )

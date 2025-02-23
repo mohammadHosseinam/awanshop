@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FileUploadInput({label , multiple}) {
+function FileUploadInput({label , multiple , onChange}) {
   return (
     <div className="">
       <label className="block mb-2  mt-3 text-sm font-vazirmatn font-normal text-gray-900" htmlFor="user_avatar">{label}</label>
@@ -10,6 +10,7 @@ function FileUploadInput({label , multiple}) {
         id="user_avatar"
         type="file"
         multiple={multiple}
+        onChange={onChange}
       />
     </div>
   );
