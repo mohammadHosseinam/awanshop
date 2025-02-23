@@ -1,6 +1,5 @@
 const Product = require('./../../model/Product/index.js').Product;
 const { Comment } = require('../../model/Comment/index.js');
-const { Review } = require('../../model/review/index.js');
 const { saveImageInDataBase } = require('../../utilities/saveImageInDataBase/inex.js');
 
 const handelShowPtoduct = async (req, res) => {
@@ -18,31 +17,76 @@ const handelShowPtoduct = async (req, res) => {
 }
 
 const handelCreateProduct = async (req, res) => {
-    console.log(req.body)
-    if (!req.body.name) return res.status(400).json({ massage: "نام محصول را وارد کنید" })
-    if (!req.body.price) return res.status(400).json({ massage: "قیمت محصول را وارد کنید" })
-    if (!req.body.section) return res.status(400).json({ massage: "دسته بندی محصول را وارد کنید" })
-    if (!req.body.sizes) return res.status(400).json({ massage: "سایز های محصول را وارد کنید" })
-    if (!req.body.type) return res.status(400).json({ massage: "جنس محصول را وارد کنید" })
-    if (!req.body.style) return res.status(400).json({ massage: "استایل محصول را وارد کنید" })
-    if (!req.body.brand) return res.status(400).json({ massage: "برند محصول را وارد کنید" })
-    if (!req.body.fagh) return res.status(400).json({ massage: "فاق محصول را وارد کنید" })
-    if (!req.body.colorName) return res.status(400).json({ massage: "نام رنگ محصول را وارد کنید" })
-    if (!req.body.colorName) return res.status(400).json({ massage: "رنگ محصول را انتخاب کنید" })
-    if (!req.files.mainPicture) return res.status(400).json({ massage: "عکس اصلی محصول را وارد کنید" })
-    if (!req.files.otherPictures) return res.status(400).json({ massage: "عکس های دیگر محصول را وارد کنید" })
+    try {
+        // Required fields for validation
+        const requiredFields = [
+            'name', 'price', 'section', 'sizes', 'type', 'style', 
+            'brand', 'fagh', 'colorName',
+        ];
 
-    const existProduct = await Product.findOne({ name: req.body.name })
-    console.log(existProduct)
-    if (existProduct) return res.status(400).json({ massage: "Product already exist" })
-    const picture = req.files?.mainPicture
-    const otherPictures = req.files?.otherPictures
-    saveImageInDataBase(picture)
-    otherPictures.forEach(picture => saveImageInDataBase(picture))   
-    const newProduct = new Product({ name: req.body.name, price: req.body.price, mainPicture: picture ? picture.md5 + picture.name + ".jpg" : "" , otherPictures : req.body.otherPictures.map(picture => picture? picture.md5 + picture.name + ".jpg" : "") , section: req.body.section ,sizes: req.body.sizes ,type :req.body.type ,style :req.body.type ,brand: req.body.brand ,fagh: req.body.fagh ,thickness: req.body.thickness ,colors: req.body.colors , isPopular :req.body.isPopular })
-    await newProduct.save()
-    res.status(201).json({ massage: "Product saved sucessfully!?" })
-}
+        // Validate required fields
+        for (const field of requiredFields) {
+            if (!req.body[field]) {
+                return res.status(400).json({ message: `${field} را وارد کنید` });
+            }
+        }
+
+        if (!req.files.mainPicture) {
+            return res.status(400).json({ message: `mainPicture را وارد کنید` });
+        }
+
+        // Check if product already exists
+        const existProduct = await Product.findOne({ name: req.body.name });
+        if (existProduct) {
+            return res.status(400).json({ message: "محصول قبلا ثبت شده است" });
+        }
+        // Handle images (main picture and other pictures)
+        const mainPicture = req.files.mainPicture;
+        const otherPictures = req.files["otherPictures"]
+        console.log("otherPictures:" , otherPictures)
+        if (mainPicture.name) {
+             await saveImageInDataBase(mainPicture);
+        }
+        if (Array.isArray(otherPictures)) {
+            await Promise.all(
+                otherPictures.map(async (picture) => {
+                    console.log("Saving picture:", picture.name);
+                    await saveImageInDataBase(picture);
+                })
+            );
+        } else if (otherPictures) {
+            // Handle the case when `OtherPicture` is a single file
+            saveImageInDataBase(otherPictures);
+        }
+
+        // Create new product object
+        const newProduct = new Product({
+            name: req.body.name,
+            price: req.body.price,
+            mainPicture: mainPicture ? `${mainPicture.md5 + mainPicture.name.split(".")[0]}.jpg` : "",
+            otherPictures: Array.isArray(otherPictures)
+                ? otherPictures.map(picture => `${picture.md5}${picture.name.split(".")[0]}.jpg`)
+                : otherPictures ? [`${otherPictures.md5}${otherPictures.name.split(".")[0]}.jpg`] : [""],
+            section: req.body.section,
+            sizes: JSON.parse(req.body.sizes),
+            type: req.body.type,
+            style: req.body.style,
+            brand: req.body.brand,
+            fagh: req.body.fagh,
+            thickness: req.body.thickness,
+            colors: req.body.colors,
+            isPopular: req.body.isPopular || false
+        });
+
+        // Save product to database
+        await newProduct.save();
+        res.status(201).json({ message: "محصول با موفقیت ذخیره شد!" });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ message: "مشکلی پیش آمده است" });
+    }
+};
+
 
 const handelShowPopularPtoducts = async (req, res) => {
         const popProducts = await Product.find({ ispopular: true})

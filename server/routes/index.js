@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { handelLoginUser , handelSignInUser} = require('./../controller/auth/index.js')
-const { handelShowPtoduct, handelCreateProduct , handelShowPopularPtoducts , handelShowPopularPtoducts} = require('./../controller/product/index.js')
+const { handelShowPtoduct, handelCreateProduct , handelShowPopularPtoducts} = require('./../controller/product/index.js')
 const { handelShowComments , handelCreateComment } = require('./../controller/comment/index.js')
 const { handelShowAllUserOrders , handelCreateOrder , handelShowUnsendUserOrders , handelShowRejectedUserOrders} = require('./../controller/order/index.js')
 const { showAllOrdersHandeler , showUnsendOrdersHandeler , showReturnedOrdersHandeler , updateOrderStatusHandeler} = require('./../controller/admin/index.js')
