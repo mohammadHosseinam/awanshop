@@ -9,3 +9,8 @@ export const handelCreateProductService = async (data) => {
         })
     return res
 }
+
+export const readSingleProductService = async (productName) => {
+    const res = await mainInstance.get(`/showProduct?productName=${productName}`)
+    return res
+}

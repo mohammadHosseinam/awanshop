@@ -21,6 +21,7 @@ const productSchema = yup.object({
   brand: yup.string().required('برند الزامی است'),
   price: yup.string().required('قیمت الزامی است'),
   colorName: yup.string().required('اسم رنگ الزامی است'),
+  discount: yup.number(),
   sizes: yup.object().shape(
     Object.fromEntries(
       Array.from({ length: 20 }, (_, i) => `${32 + i * 2}`).map((size) => [
@@ -35,6 +36,7 @@ function CreatProduct() {
   const [color, setColor] = useState('#ffffff');
   const [mainPicture, setMainPicture] = useState(null);
   const [otherPictures, setOtherPictures] = useState([]);
+  const [isBestSeller, setIsBestSeller] = useState(false);
 
   const {
     register,
@@ -58,7 +60,7 @@ function CreatProduct() {
         formData.append(key, value);
       }
     });
-
+    formData.append('bestSeller', isBestSeller);
     formData.append('colorCode', color);
     formData.append('mainPicture', mainPicture || '');
     if (otherPictures && otherPictures.length > 0) {
@@ -109,6 +111,7 @@ function CreatProduct() {
           <TextFieild label="ضخامت" register={{ ...register('thickness') }} error={errors.thickness} />
           <TextFieild label="قیمت" register={{ ...register('price') }} error={errors.price} />
           <TextFieild label="اسم رنگ" register={{ ...register('colorName') }} error={errors.colorName} />
+          <TextFieild label="درصد تخفیف" register={{ ...register('discount') }} error={errors.discount} />
 
           <h5 className="font-vazirmatn text-base mt-2">انتخاب رنگ</h5>
           <div className="flex gap-3 m-2">
@@ -118,7 +121,14 @@ function CreatProduct() {
 
           <FileUploadInput label="عکس اصلی" multiple={false} onChange={(e) => { setMainPicture(e.target.files[0]); }} />
           <FileUploadInput label="عکس های دیگر" multiple={true} onChange={(e) => { setOtherPictures(e.target.files) }} />
-
+          <div className="flex items-start my-5">
+            <div className="flex items-center h-5">
+              <input id="bestSeller" type="checkbox" checked={isBestSeller} onChange={(e) => setIsBestSeller(e.target.checked)} 
+              className="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300"
+              />
+            </div>
+            <label htmlFor="bestSeller" className="ms-2 text-sm font-vazirmatn font-medium text-gray-900"> محصولات پرفروش</label>
+          </div>
           <div className="w-fit mx-auto mt-4">
             <PrimaryInlineButton text="ساخت محصول" />
           </div>

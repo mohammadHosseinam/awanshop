@@ -74,7 +74,9 @@ const handelCreateProduct = async (req, res) => {
             brand: req.body.brand,
             fagh: req.body.fagh,
             thickness: req.body.thickness,
-            colors: req.body.colors,
+            colorName: req.body.colorName,
+            colorCode: req.body.colorCode,
+            discount: req.body.discount,
             isPopular: req.body.isPopular || false
         });
 

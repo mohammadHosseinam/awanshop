@@ -16,7 +16,7 @@ export const routes = {
     },
     Product:{
         id:"2",
-        path:"/product",
+        path:"/product/:id",
         element:<Product/>
     },
     login:{
