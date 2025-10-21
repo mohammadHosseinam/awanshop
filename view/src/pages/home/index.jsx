@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../layout/header/index.jsx'
-import hiroBackground from "../../assets/images/hirimage.png"
+import HiroImage from "../../assets/images/hiroImage.png"
 import TrukIcon from '../../assets/icons/truckIcon/index.jsx'
 import DiscountIcon from '../../assets/icons/discountIcon/index.jsx'
 import ChangeIcon from '../../assets/icons/changeIcon/index.jsx'
@@ -12,10 +12,28 @@ import Footer from '../../layout/footer/index.jsx'
 function Home() {
     return (
         <>
-            <Header />
-            <div style={{ background: `url(${hiroBackground})`, backgroundColor: "#000000", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className='w-full h-64 aspect-w-16 aspect-h-8 md:aspect-h-7'>
-                <div className='flex justify-center items-center bg-black bg-opacity-55 h-full'>
-                    <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-4xl text-white'>۲۳۸۳۹۶۲۸</h1>
+            
+            <div className='w-full relative '>
+                <svg
+                    className="w-full absolute -z-10"
+                    viewBox="0 0 1440 724"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice"
+                >
+                    <path d="M1440 689.117C880.51 735.957 565.033 735.296 0 689.117V0H1440V689.117Z" fill="#581010" />
+                </svg>
+                <Header HomePage={true}/>
+                <div className='flex justify-between items-center bg-opacity-55 h-full mx-20'>
+                    
+                    <div className='h-[744px] flex flex-col justify-center gap-3'>
+                        <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-5xl font-bold text-white'>آوان شــــاپـــــ </h1>
+                        <p className='font-vazirmatn sm:text-base md:text-lg lg:text-3xl font-bold text-white mb-3'>محصولات با کیفیت در دسترس شما</p>
+                        <button className='text-xl font-bold text-white bg-black px-6 py-3 rounded-[38px] w-[218px] flex justify-center items-center'>
+                            مشاهده محصولات
+                        </button>
+                    </div>
+                    <img src={HiroImage} alt="" />
                 </div>
             </div>
 
