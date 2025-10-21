@@ -5,11 +5,13 @@ const ProductSchema = new mongoose.Schema({
     image: String,
     price: Number,
     size: String,
-    color: String,
+    colorName: String,
+    colorCode: String,
     count: Number,
-    id: String
+    discount: Number,
+    id: String,
   });
 
-const Order = mongoose.model('Order', { name: String , phoneNumber: String , address: String, postCode: String , status: {type :String , defualt : "unsend"} , trackingCode: String , products: [ProductSchema] , totalPrice : String ,userId : String , orderedAt: {type: Date , default: Date.now}});
+const Order = mongoose.model('Order', { name: String , phoneNumber: String , address: String, postCode: String , status: {type :String , defualt : "not paid"} , trackingCode: String , products: [ProductSchema] , totalPrice : String , payablePrice : String , userId : String , orderedAt: {type: Date , default: Date.now}});
 
 module.exports = {Order}

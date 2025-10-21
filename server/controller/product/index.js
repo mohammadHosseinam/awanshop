@@ -1,13 +1,14 @@
 const Product = require('./../../model/Product/index.js').Product;
 const { Comment } = require('../../model/Comment/index.js');
 const { saveImageInDataBase } = require('../../utilities/saveImageInDataBase/inex.js');
+var Kavenegar = require('kavenegar');
 
 const handelShowPtoduct = async (req, res) => {
     if (req.query.productName) {
         const singleProduct = await Product.findOne({ name: req.query.productName.split("_").join(" ") })
         if (singleProduct) {
-            const sameSectionProducts = await Product.find({ section: singleProduct.section , _id: { $ne: singleProduct._id } })
-            const sameStyleProducts = await Product.find({ style: singleProduct.style , _id: { $ne: singleProduct._id }})
+            const sameSectionProducts = await Product.find({ section: singleProduct.section, _id: { $ne: singleProduct._id } })
+            const sameStyleProducts = await Product.find({ style: singleProduct.style, _id: { $ne: singleProduct._id } })
             const simularProducts = sameSectionProducts.filter(item => !sameStyleProducts.includes(item));
             const comments = await Comment.find({ idOfProduct: singleProduct._id })
             return res.status(200).json({ products: singleProduct, simularProducts, comments })
@@ -20,7 +21,7 @@ const handelCreateProduct = async (req, res) => {
     try {
         // Required fields for validation
         const requiredFields = [
-            'name', 'price', 'section', 'sizes', 'type', 'style', 
+            'name', 'price', 'section', 'sizes', 'type', 'style',
             'brand', 'fagh', 'colorName',
         ];
 
@@ -43,9 +44,9 @@ const handelCreateProduct = async (req, res) => {
         // Handle images (main picture and other pictures)
         const mainPicture = req.files.mainPicture;
         const otherPictures = req.files["otherPictures"]
-        console.log("otherPictures:" , otherPictures)
+        console.log("otherPictures:", otherPictures)
         if (mainPicture.name) {
-             await saveImageInDataBase(mainPicture);
+            await saveImageInDataBase(mainPicture);
         }
         if (Array.isArray(otherPictures)) {
             await Promise.all(
@@ -69,6 +70,7 @@ const handelCreateProduct = async (req, res) => {
                 : otherPictures ? [`${otherPictures.md5}${otherPictures.name.split(".")[0]}.jpg`] : [""],
             section: req.body.section,
             sizes: JSON.parse(req.body.sizes),
+            linkedSizes : JSON.parse(req.body.linkedSizes) || [],
             type: req.body.type,
             style: req.body.style,
             brand: req.body.brand,
@@ -89,17 +91,59 @@ const handelCreateProduct = async (req, res) => {
     }
 };
 
+const handleDeleteProduct = async (req, res) => {
+    try {
+        if (!req.query.productName) {
+            return res.status(400).json({ message: "نام محصول را وارد کنید" });
+        }
+        const productName = req.query.productName.replace(/_/g, " ");
+        const singleProduct = await Product.findOneAndDelete({ name: productName });
+        if (!singleProduct) {
+            return res.status(404).json({ message: "محصول یافت نشد" });
+        }
+        return res.status(200).json({ message: "محصول با موفقیت حذف شد" });
+    } catch (error) {
+        return res.status(500).json({ message: "خطای داخلی سرور", error: error.message });
+    }
+};
+
+const handleEditProduct = async (req, res) => {
+    try {
+        if (!req.query.productName) {
+            return res.status(400).json({ message: "نام محصول را وارد کنید" });
+        }
+        if (!req.body) {
+            return res.status(400).json({ message: "اطلاعات ویرایش را ارسال کنید" });
+        }
+
+        const productName = req.query.productName.replace(/_/g, " ");
+        const updatedProduct = await Product.findOneAndUpdate(
+            { name: productName },
+            { $set: req.body }, // مقدار جدید برای بروزرسانی
+            { new: true } // بازگرداندن نسخه به‌روز شده محصول
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: "محصول یافت نشد" });
+        }
+
+        return res.status(200).json({ message: "محصول با موفقیت ویرایش شد", product: updatedProduct });
+    } catch (error) {
+        return res.status(500).json({ message: "خطای داخلی سرور", error: error.message });
+    }
+};
+
 
 const handelShowPopularPtoducts = async (req, res) => {
-        const popProducts = await Product.find({ ispopular: true})
-        if(!popProducts) return res.status(404).json({ massage: "404: product not founded" })
-        return res.status(200).json({popProducts})
+    const popProducts = await Product.find({ ispopular: true })
+    if (!popProducts) return res.status(404).json({ massage: "404: product not founded" })
+    return res.status(200).json({ popProducts })
 }
 
 const handelShowSectionPtoducts = async (req, res) => {
-    const popProducts = await Product.find({ section: section.includes(req.body.section)})
-    if(!popProducts) return res.status(404).json({ massage: "404: product not founded" })
-    return res.status(200).json({popProducts})
+    const popProducts = await Product.find({ section: section.includes(req.body.section) })
+    if (!popProducts) return res.status(404).json({ massage: "404: product not founded" })
+    return res.status(200).json({ popProducts })
 }
 
-module.exports = { handelShowPtoduct, handelCreateProduct , handelShowPopularPtoducts , handelShowPopularPtoducts}
+module.exports = { handelShowPtoduct, handelCreateProduct, handleDeleteProduct, handleEditProduct, handelShowPopularPtoducts, handelShowPopularPtoducts }

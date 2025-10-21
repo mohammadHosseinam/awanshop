@@ -15,7 +15,7 @@ function Home() {
             <Header />
             <div style={{ background: `url(${hiroBackground})`, backgroundColor: "#000000", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className='w-full h-64 aspect-w-16 aspect-h-8 md:aspect-h-7'>
                 <div className='flex justify-center items-center bg-black bg-opacity-55 h-full'>
-                    <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-4xl text-white'><span className='text-lime-800 text-xl md:text-lg lg:text-4xl font-medium'>آوان</span> به معنای طراوت و تازگیست</h1>
+                    <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-4xl text-white'>۲۳۸۳۹۶۲۸</h1>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className='w-full py-5 bg-green-300 flex items-center'>
+            <div className='w-full py-5 bg-[#BFE0C1] flex items-center'>
                 <div className='flex flex-col items-center w-16 mr-8 ml-2'>
                     <h3 className='text-secoundry font-vazirmatn font-medium w-16 text-center pb-2'>محصولات پرفروش</h3>
                     <BoxIcon />

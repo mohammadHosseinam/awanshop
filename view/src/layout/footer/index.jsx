@@ -24,7 +24,7 @@ function Footer() {
         </div>
         <div className='flex flex-col items-center'>
           <p>تاییده ها:</p>
-          <div className='w-14 h-14 bg-slate-300'></div>
+          <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=617648&Code=ovzCxqCGB0Xcpnd5KwGcb205SXHDRcN1'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=617648&Code=ovzCxqCGB0Xcpnd5KwGcb205SXHDRcN1' alt='enamad' style={{cursor : 'pointer'}} code='ovzCxqCGB0Xcpnd5KwGcb205SXHDRcN1'/></a>
         </div>
       </div>
       <p style={{direction : "ltr"}} className='text-center font-sans text-xs mb-1'>© 2024 awanshop All Rights Reserved.</p>

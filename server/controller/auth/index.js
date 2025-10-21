@@ -1,31 +1,92 @@
 const User = require('./../../model/User/index.js').User;
-const bcrypt = require('bcrypt');
+const OTP = require('./../../model/OTP/index.js').OTP;
+
 const JWT = require('jsonwebtoken');
+var Kavenegar = require('kavenegar');
+var api = Kavenegar.KavenegarApi({ apikey: '6D597739704B49376472333263486651722B6546656D6A686F6C6E2F366E6F63436A31633348774C4550733D' });
+const ADMIN_NUMBERS = process.env.ADMIN_NUMBERS.split(",");
 
-const handelLoginUser = async (req, res) => {
-    if (!req.body.username) return res.status(400).json({ massage: "لطفا نام کاربری را وارد کنید" })
-    if (!req.body.password) return res.status(400).json({ massage: "لطفا پسورد را وارد کنید" })
-    const existUser = await User.findOne({ userName: req.body.userName })
-    if (!existUser) return res.status(400).json({ massage: "نام کاربری یا رمز عبور ناصحیح است" })
-    const { password: userPassword, name: userName, _id: userId } = existUser
-    bcrypt.compare(req.body.password.toString(), existUser.password, function (err, result) {
-      if (!result) return res.status(400).json({ massage: "نام کاربری یا رمز عبور ناصحیح است" })
-      const token = JWT.sign({userName , userId} , process.env.SECRETKEY)
-      return res.status(201).json({ massage: " ورود به حساب کاربری با موفقیت انجام شد" , token })
-    })
+const sendOTP = async (req, res) => {
+  const { phoneNumber } = req.body;
+  // if (!phoneNumber) return res.status(400).json({ message: "شماره تلفن الزامی است" });
+  // let user = await User.findOne({ phoneNumber });
+  // if (!user) {
+  //   return res.status(400).json({ message: "ابتدا ثبت نام کنید" });
+  // }
+  // const otp = Math.floor(100000 + Math.random() * 900000); // تولید OTP 6 رقمی
+  // await OTP.findOneAndUpdate(
+  //     { phoneNumber },
+  //     { otp, createdAt: new Date() }, // ایجاد یا بروزرسانی OTP
+  //     { upsert: true }
+  // );
+
+  // api.VerifyLookup({ receptor: phoneNumber, token: otp, template: "otpTestTech", type: "sms" });
+
+  res.status(200).json({ message: "کد تایید ارسال شد" });
+};
+
+const verifyOTP = async (req, res) => {
+  const { phoneNumber, otp } = req.body;
+  // if (!phoneNumber || !otp) return res.status(400).json({ message: "شماره تلفن و کد تایید الزامی است" });
+
+  // const record = await OTP.findOne({ phoneNumber });
+  // if (!record || record.otp !== otp) return res.status(400).json({ message: "کد تایید نادرست یا منقضی شده است" });
+
+  // await OTP.deleteOne({ phoneNumber }); // حذف OTP بعد از استفاده
+
+  let user = await User.findOne({ phoneNumber });
+  if (!user) {
+      user = new User({ phoneNumber });
+      await user.save();
   }
 
-const handelSignInUser = async (req, res) => {
-    if (!req.body.userNmae) return res.status(400).json({ massage: "لطفا نام کاربری را وارد کنید" })
-    if (!req.body.phoneNumber) return res.status(400).json({ massage: "لطفا شماره تلفن را وارد کنید" })
-    if (!req.body.password) return res.status(400).json({ massage: "لطفا پسورد را وارد کنید" })
-    const existUser = await User.findOne({ userName: req.body.userName })
-    if (existUser) return res.status(400).json({ massage: "شما قبلا حساب ساخته اید" })
-    const salt = await bcrypt.genSalt(10)
-    const hashedPass = await bcrypt.hash(req.body.password.toString(), salt)
-    const newUser = new User({ phoneNumber: String , userName : String, password: String})
-    await newUser.save()
-    res.status(201).json({ massage: "حساب کاربری با موفقیت ساخته شد" })
+  const token = JWT.sign({ userId: user._id, phoneNumber  , firstName : user.firstName , lastName : user.lastName}, process.env.SECRETKEY, { expiresIn: "30d" });
+  res.status(200).json({ message: "ورود موفقیت‌آمیز بود", token });
+};
+const sendRegisterOTP = async (req, res) => {
+  const { phoneNumber, firstName, lastName } = req.body;
+  if (!phoneNumber || !firstName || !lastName) {
+      return res.status(400).json({ message: "لطفا نام، نام خانوادگی و شماره تلفن را وارد کنید" });
+  }
+  let user = await User.findOne({ phoneNumber });
+  if (user) {
+    return res.status(400).json({ message: "شما قبلا ثبت نام کرده اید" });
+  }
+  const otp = Math.floor(100000 + Math.random() * 900000); // تولید کد ۶ رقمی
+  await OTP.findOneAndUpdate(
+      { phoneNumber },
+      { otp, createdAt: new Date() },
+      { upsert: true }
+  );
+
+  // ارسال کد از طریق کاوه‌نگار
+  api.VerifyLookup({ receptor: phoneNumber, token: otp, template: "otpTestTech", type: "sms" });
+
+  res.status(200).json({ message: "کد تایید ارسال شد", phoneNumber });
+};
+
+const verifyOTPAndRegister = async (req, res) => {
+  const { phoneNumber, otp, firstName, lastName } = req.body;
+  if (!phoneNumber || !otp) {
+      return res.status(400).json({ message: "شماره تلفن و کد تایید الزامی است" });
   }
 
-module.exports = { handelLoginUser, handelSignInUser }
+  const record = await OTP.findOne({ phoneNumber });
+  if (!record || record.otp !== otp) {
+      return res.status(400).json({ message: "کد تایید نادرست یا منقضی شده است" });
+  }
+
+  let user = await User.findOne({ phoneNumber });
+  if (!user) {
+      user = new User({ phoneNumber, firstName, lastName , isAdmin: ADMIN_NUMBERS.includes(phoneNumber.trim())});
+      await user.save();
+  }
+
+  await OTP.deleteOne({ phoneNumber }); // حذف OTP پس از ثبت‌نام موفق
+
+  const token = JWT.sign({ userId: user._id, phoneNumber , firstName : user.firstName , lastName : user.LastName}, process.env.SECRETKEY, { expiresIn: "30d" });
+  res.status(200).json({ message: "ثبت‌نام موفقیت‌آمیز بود", token, user });
+};
+
+
+module.exports = { sendOTP, verifyOTP , sendRegisterOTP , verifyOTPAndRegister};

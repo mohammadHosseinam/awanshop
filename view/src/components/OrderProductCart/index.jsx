@@ -1,12 +1,12 @@
 import React from 'react'
-import image from "../../assets/images/product.jpg"
 import ColorButton from '../ColorButton'
+import { uploadsURL } from '../../api/constants'
 
 function OrderProductCart({img={image} , name="شلوار اسکینی old navy" , count="2" , color="#4743DE",size="42" , price="450,000"}) {
     return (
         <div className='rounded flex  text-center'>
             <div className='w-20 h-20 shrink-0'>
-                <img className='w-20 h-20 border border-slate-200 rounded' src={image} alt="product image" />
+                <img className='w-20 h-20 border border-slate-200 rounded' src={uploadsURL + img} alt="product image" />
             </div>
             <div className='mr-3 flex flex-col justify-between w-full'>
                 <h4 className='font-vazirmatn text-base text-right'>{name}</h4>

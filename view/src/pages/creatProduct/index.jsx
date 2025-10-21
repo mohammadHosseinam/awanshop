@@ -10,6 +10,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { handelCreateProductService } from '../../api/services';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import LinkedSizesSelector from './linkedSizesSelector';
 
 const productSchema = yup.object({
   name: yup.string().required('نام محصول الزامی است'),
@@ -37,7 +39,7 @@ function CreatProduct() {
   const [mainPicture, setMainPicture] = useState(null);
   const [otherPictures, setOtherPictures] = useState([]);
   const [isBestSeller, setIsBestSeller] = useState(false);
-
+  const linkedSizes = useSelector((state) => state.linkedSizes);
   const {
     register,
     handleSubmit,
@@ -50,7 +52,7 @@ function CreatProduct() {
       )
     }
   });
-
+  console.log(linkedSizes)
   const handleCreateProduct = async (data) => {
     const formData = new FormData();
     Object.entries(data).forEach(([key, value]) => {
@@ -61,6 +63,7 @@ function CreatProduct() {
       }
     });
     formData.append('bestSeller', isBestSeller);
+    formData.append('linkedSizes', JSON.stringify(linkedSizes));
     formData.append('colorCode', color);
     formData.append('mainPicture', mainPicture || '');
     if (otherPictures && otherPictures.length > 0) {
@@ -103,7 +106,7 @@ function CreatProduct() {
               </div>
             ))}
           </div>
-
+          <LinkedSizesSelector/>
           <TextFieild label="جنس" register={{ ...register('type') }} error={errors.type} />
           <TextFieild label="استایل" register={{ ...register('style') }} error={errors.style} />
           <TextFieild label="برند" register={{ ...register('brand') }} error={errors.brand} />
