@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../layout/header/index.jsx'
 import HiroImage from "../../assets/images/hiroImage.png"
+import Shalvar from "../../assets/images/shalvar.png"
 import TrukIcon from '../../assets/icons/truckIcon/index.jsx'
 import DiscountIcon from '../../assets/icons/discountIcon/index.jsx'
 import ChangeIcon from '../../assets/icons/changeIcon/index.jsx'
@@ -8,11 +9,12 @@ import BoxIcon from '../../assets/icons/boxIcon/index.jsx'
 import ProductCard from '../../components/ProductCard/index.jsx'
 import Sections from './sections/index.jsx'
 import Footer from '../../layout/footer/index.jsx'
+import SectionCard from '../../components/SectionCard/index.jsx'
 
 function Home() {
     return (
         <>
-            
+
             <div className='w-full relative '>
                 <svg
                     className="w-full absolute -z-10"
@@ -23,9 +25,9 @@ function Home() {
                 >
                     <path d="M1440 689.117C880.51 735.957 565.033 735.296 0 689.117V0H1440V689.117Z" fill="#581010" />
                 </svg>
-                <Header HomePage={true}/>
+                <Header HomePage={true} />
                 <div className='flex justify-between items-center bg-opacity-55 h-full mx-20'>
-                    
+
                     <div className='h-[744px] flex flex-col justify-center gap-3'>
                         <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-5xl font-bold text-white'>آوان شــــاپـــــ </h1>
                         <p className='font-vazirmatn sm:text-base md:text-lg lg:text-3xl font-bold text-white mb-3'>محصولات با کیفیت در دسترس شما</p>
@@ -36,20 +38,15 @@ function Home() {
                     <img src={HiroImage} alt="" />
                 </div>
             </div>
-
-            <div className='flex items-center justify-evenly py-5'>
-                <div className='flex flex-col items-center'>
-                    <TrukIcon />
-                    <h4 className='text-sm text-slate-800 font-vazirmatn font-medium mt-1'>ارسال سریع</h4>
-                </div>
-                <div className='flex flex-col items-center'>
-                    <DiscountIcon />
-                    <h4 className='text-sm text-slate-800 font-vazirmatn font-medium  mt-1'>قیمت شگفت انگیز</h4>
-                </div>
-                <div className='flex flex-col items-center'>
-                    <ChangeIcon />
-                    <h4 className='text-sm text-slate-800 font-vazirmatn font-medium mt-1'>امکان تعویض</h4>
-                </div>
+            <h4 className='text-3xl font-bold text-center'>دسته بندی محصولات</h4>
+            <div className='flex mx-20 justify-between mt-10'>
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
+                <SectionCard Image={Shalvar} Name={"شلوار"} />
             </div>
 
             <div className='w-full py-5 bg-[#BFE0C1] flex items-center'>
