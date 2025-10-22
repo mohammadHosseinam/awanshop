@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'YekanBakh';
+    src: url('/fonts/YekanBakh/YekanBakhFaNum-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('/fonts/YekanBakh/YekanBakhFaNum-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('/fonts/YekanBakh/YekanBakhFaNum-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'YekanBakh';
+    src: url('/fonts/YekanBakh/YekanBakhFaNum-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'YekanBakh', sans-serif;
+  }
