@@ -16,7 +16,7 @@ export default function CategoriesSection() {
 
     return (
         <div className="">
-            <h4 className="text-3xl mt-4 xl:mt-0 mb-5 font-bold text-center">
+            <h4 className="text-lg xl:text-2xl mt-4 xl:mt-0 mb-5 font-bold text-center">
                 دسته‌بندی محصولات
             </h4>
 
