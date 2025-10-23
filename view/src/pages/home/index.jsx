@@ -18,16 +18,6 @@ function Home() {
     return (
         <>
             <HeroSection/>
-            {/* <h4 className='text-3xl mt-4 xl:mt-0 font-bold text-center'>دسته بندی محصولات</h4>
-            <div className='flex mx-20 justify-between mt-10'>
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-                <SectionCard Image={Shalvar} Name={"شلوار"} />
-            </div> */}
             <CategoriesSection/>
             <div className='w-full px-20 mt-20'>
                 <div className='w-full flex flex-col pt-5 pl-5 pr-7 items-center relative'>
@@ -37,7 +27,7 @@ function Home() {
                     <ProductsSlider Title="محصولات شگفت انگیز" />
                 </div>
             </div>
-            <div className='w-full flex px-20 justify-center gap-10 mt-10'>
+            <div className='w-full flex-col xl:flex-row flex px-4 md:px-10 xl:px-20 justify-center gap-4 xl:gap-10 mt-10'>
                 <img className='grow' src={Baner1} alt="" />
                 <img className='grow' src={Baner2} alt="" />
             </div>
@@ -51,15 +41,15 @@ function Home() {
                     <ProductsSlider Title="محصولات شگفت انگیز" color="light" />
                 </div>
             </div>
-            <div className='w-full flex px-20 justify-center gap-10 mt-10'>
+            <div className='w-full flex px-4 md:px-10 xl:px-20 justify-center gap-10 mt-10'>
                 <img className='w-full' src={ShopBaner} alt="" />
             </div>
-            <div className='relative mx-20 my-16'>
+            <div className='relative mx-4 md:mx-10 lg:mx-20 my-16'>
                 <svg className="absolute top-0 w-full h-auto -z-10" width="1204" height="376" viewBox="0 0 1204 376" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                     <path d="M0 32C0 14.3269 14.3269 0 32 0H1172C1189.67 0 1204 14.3269 1204 32V265.527C1204 280.261 1193.78 293.14 1179.46 296.583C729.804 404.646 469.415 400.317 24.7526 296.458C10.3231 293.088 0 280.162 0 265.345V32Z" fill="#7C1616" />
                 </svg>
                 <div className='flex items-center'>
-                    <div>
+                    <div className='hidden xl:flex'>
                         <img src={FAQ} height={388} alt="" />
                     </div>
                     <div className='w-full flex flex-col gap-4 px-5 pt-5'>

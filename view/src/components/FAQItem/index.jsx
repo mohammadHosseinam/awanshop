@@ -13,7 +13,7 @@ export default function FAQItem({question , answer}) {
         className="flex items-center justify-between cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <h6 className="text-xl font-bold text-neutral-950">
+        <h6 className="text-sm xl:text-xl font-bold text-neutral-950">
           {question}
         </h6>
 
@@ -49,7 +49,7 @@ export default function FAQItem({question , answer}) {
           open ? "max-h-40 opacity-100 mt-3" : "max-h-0 opacity-0"
         }`}
       >
-        <p className="text-base font-medium text-neutral-800 leading-relaxed">
+        <p className="text-sm xl:text-base font-medium text-neutral-800 leading-relaxed">
           {answer}
         </p>
       </div>
