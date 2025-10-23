@@ -1,7 +1,10 @@
 import React from 'react'
 import TextFieild from '../../components/TextFieild'
 import PrimaryButton from '../../components/PrimaryButton'
-import logo from "../../assets/images/awanLogo.png"
+import Logo from "../../assets/images/AWAN LOGO.png"
+import AuthBG from "../../assets/images/authBG.png"
+
+
 import { Link, useNavigate } from 'react-router-dom'
 import { handelLoginService } from '../../api/services'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -47,18 +50,23 @@ function SignIn() {
         }
     };
     return (
-        <div className='h-screen flex flex-col justify-center'>
-            <img className='w-16 h-16 mx-auto' src={logo} alt="logo image" />
-            <form onSubmit={handleSubmit(handleLoginButton)} className='m-12 mx-auto w-3/4 md:w-1/2 xl:w-1/3 h-fit'>
-                <TextFieild label="شماره همراه" register={{ ...register('phoneNumber') }} error={errors.phoneNumber} />
-                <div className="w-fit mx-auto mt-5">
-                    <PrimaryButton text="ورود به حساب کاربری" />
-                </div>
-                <div className='flex gap-2 w-fit mx-auto mt-3'>
-                    <p style={{ fontSize: "10px" }} className='font-vazirmatn text-slate-900 font-medium'>حساب کاربری ندارید؟</p>
-                    <Link style={{ color: "#5C99F4" }} to={`/signUp?backUrl=${backUrl}`} className='font-vazirmatn font-semibold text-xs'>ساخت حساب</Link>
-                </div>
-            </form>
+        <div className='h-screen flex flex-col justify-center bg-cover bg-center' style={{ backgroundImage: `url(${AuthBG})` }}>
+            <div className='bg-white bg-opacity-70 w-1/3 border border-[#838383] border-opacity-25 rounded-xl mx-auto p-6'>
+                <img className='mx-auto' src={Logo} alt="logo image" />
+                <form onSubmit={handleSubmit(handleLoginButton)} className=' mx-auto w-full h-fit flex flex-col gap-5'>
+                    <h1 className='text-xl font-bold text-[#27282C]'>ورود به حساب</h1>
+                    <TextFieild label="شماره همراه" register={{ ...register('phoneNumber') }} error={errors.phoneNumber} />
+                    <div>
+                        <div className="w-full mx-auto">
+                            <PrimaryButton text="ورود به حساب کاربری" />
+                        </div>
+                        <div className='flex gap-2 w-full mx-auto mt-2 justify-between'>
+                            <p className='text-[#56565F] text-sm font-bold'>حساب کاربری ندارید؟</p>
+                            <Link to={`/signUp?backUrl=${backUrl}`} className='text-[#1B82C2] text-sm font-bold'>ساخت حساب</Link>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
