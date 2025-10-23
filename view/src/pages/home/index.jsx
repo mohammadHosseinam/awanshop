@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../../layout/header/index.jsx'
 import HiroImage from "../../assets/images/hiroImage.png"
+import Hirobg from "../../assets/images/hirobg.png"
 import Shalvar from "../../assets/images/shalvar.png"
 import Baner2 from "../../assets/images/baner2.png"
 import Baner1 from "../../assets/images/baner1.png"
@@ -10,34 +11,14 @@ import Footer from '../../layout/footer/index.jsx'
 import SectionCard from '../../components/SectionCard/index.jsx'
 import ProductsSlider from '../../components/ProductsSlider/index.jsx'
 import FAQItem from '../../components/FAQItem/index.jsx'
+import HeroSection from './heroSection/index.jsx'
 
 function Home() {
     return (
         <>
+            <HeroSection/>
 
-            <div className='w-full relative '>
-                <svg
-                    className="w-full absolute -z-10"
-                    viewBox="0 0 1440 724"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                >
-                    <path d="M1440 689.117C880.51 735.957 565.033 735.296 0 689.117V0H1440V689.117Z" fill="#581010" />
-                </svg>
-                <Header HomePage={true} />
-                <div className='flex justify-between items-center bg-opacity-55 h-full mx-20'>
 
-                    <div className='h-[744px] flex flex-col justify-center gap-3'>
-                        <h1 className='font-vazirmatn sm:text-base md:text-lg lg:text-5xl font-bold text-white'>آوان شــــاپـــــ </h1>
-                        <p className='font-vazirmatn sm:text-base md:text-lg lg:text-3xl font-bold text-white mb-3'>محصولات با کیفیت در دسترس شما</p>
-                        <button className='text-xl font-bold text-white bg-black px-6 py-3 rounded-[38px] w-[218px] flex justify-center items-center'>
-                            مشاهده محصولات
-                        </button>
-                    </div>
-                    <img src={HiroImage} alt="" />
-                </div>
-            </div>
             <h4 className='text-3xl font-bold text-center'>دسته بندی محصولات</h4>
             <div className='flex mx-20 justify-between mt-10'>
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
