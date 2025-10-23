@@ -12,14 +12,13 @@ import SectionCard from '../../components/SectionCard/index.jsx'
 import ProductsSlider from '../../components/ProductsSlider/index.jsx'
 import FAQItem from '../../components/FAQItem/index.jsx'
 import HeroSection from './heroSection/index.jsx'
+import CategoriesSection from './categoriesSection/index.jsx'
 
 function Home() {
     return (
         <>
             <HeroSection/>
-
-
-            <h4 className='text-3xl font-bold text-center'>دسته بندی محصولات</h4>
+            {/* <h4 className='text-3xl mt-4 xl:mt-0 font-bold text-center'>دسته بندی محصولات</h4>
             <div className='flex mx-20 justify-between mt-10'>
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
@@ -28,7 +27,8 @@ function Home() {
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
                 <SectionCard Image={Shalvar} Name={"شلوار"} />
-            </div>
+            </div> */}
+            <CategoriesSection/>
             <div className='w-full px-20 mt-20'>
                 <div className='w-full flex flex-col pt-5 pl-5 pr-7 items-center relative'>
                     <svg className="absolute top-0 w-full h-auto -z-10" viewBox="0 0 1272 311" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
