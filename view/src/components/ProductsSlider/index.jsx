@@ -59,7 +59,7 @@ export default function ProductsSlider({ Title , color = "dark"}) {
                 spaceBetween={16}
                 slidesPerView={1.2} // در موبایل
                 breakpoints={{
-                    640: { slidesPerView: 2, spaceBetween: 20 }, // sm
+                    500: { slidesPerView: 2, spaceBetween: 20 }, // sm
                     768: { slidesPerView: 3, spaceBetween: 24 }, // md
                     1024: { slidesPerView: 5, spaceBetween: 24 }, // lg
                 }}
