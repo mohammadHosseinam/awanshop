@@ -14,7 +14,7 @@ export default function ProductsSlider({ Title , color = "dark"}) {
     return (
         <div className="mx-auto w-full">
             <div className="flex items-center justify-between mb-6">
-                <h3 className={`text-2xl font-bold ${textColor}`}>{Title}</h3>
+                <h3 className={`text-lg xl:text-2xl font-bold ${textColor}`}>{Title}</h3>
                 <div className="flex gap-2">
                     <button className={`custom-prev p-2 rounded-full transition hover:bg-black/10 
               [&.swiper-button-disabled]:opacity-50 
