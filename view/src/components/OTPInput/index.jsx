@@ -58,7 +58,7 @@ const OTPInput = forwardRef((props, ref) => {
           onKeyDown={(e) => handleKeyDown(e, index)}
           onPaste={handlePaste}
           ref={(el) => (inputRefs.current[index] = el)}
-          className="w-12 h-14 text-center border-2 border-[#6E6E6EBF] rounded-lg text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="w-10 md:w-12 h-14 text-center border-2 border-[#6E6E6EBF] rounded-lg text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-blue-200"
         />
       ))}
     </div>

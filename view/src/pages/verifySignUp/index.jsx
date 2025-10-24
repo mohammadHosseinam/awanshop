@@ -30,7 +30,7 @@ function VerifySignUp() {
         dispatch(setOtpSent(otpValue));
 
         try {
-            const response = await handelVerifyOTPAndRegisterService({...auth, otp: otpValue});
+            const response = await handelVerifyOTPAndRegisterService({ ...auth, otp: otpValue });
             if (response?.status === 200) {
                 const token = response.data.token;
                 Cookies.set('authToken', token, { expires: 30, secure: true, sameSite: 'Strict' });
@@ -77,37 +77,67 @@ function VerifySignUp() {
     }, [timer]);
 
     return (
-        <div className='h-screen flex flex-col justify-center bg-cover bg-center' style={{ backgroundImage: `url(${AuthBG})` }}>
-            <div className='bg-white bg-opacity-70 w-1/3 border border-[#838383] border-opacity-25 rounded-xl mx-auto p-6 flex flex-col gap-5'>
-                <img className='mx-auto' src={Logo} alt="logo image" />
-                <div className='mx-auto w-full flex flex-col gap-5'>
-                    <h1 className='text-xl font-semibold text-[#27282C]'>
-                        کد تایید به شماره <span className='text-xl font-semibold text-[#1B82C2]'>{OTPphoneNumber}</span> ارسال شد
+        <div
+            className="min-h-screen flex flex-col justify-center bg-cover bg-center px-4 py-8 sm:px-6 md:px-10"
+            style={{ backgroundImage: `url(${AuthBG})` }}
+        >
+            <div className="bg-white bg-opacity-70 w-full max-w-md sm:max-w-lg md:max-w-md border border-[#838383]/25 rounded-2xl mx-auto p-4 sm:p-6 md:p-8 flex flex-col gap-6 shadow-lg">
+                {/* Logo */}
+                <Link to={`/`} >
+                    <img className='mx-auto' src={Logo} alt="logo image" />
+                </Link>
+
+                {/* Main content */}
+                <div className="flex flex-col gap-5 text-center">
+                    <h1 className="text-sm sm:text-base md:text-xl font-semibold text-[#27282C] leading-relaxed">
+                        کد تایید به شماره
+                        <span className="text-lg sm:text-xl font-semibold text-[#1B82C2]">
+                            {OTPphoneNumber}
+                        </span>
+                        ارسال شد
                     </h1>
 
-                    <OTPInput ref={otpRef} />
+                    <div className="w-full max-w-xs sm:max-w-sm mx-auto">
+                        <OTPInput ref={otpRef} />
+                    </div>
 
-                    <div className='flex gap-2 w-full mx-auto mt-2 justify-between'>
-                        <p className='text-[#56565F] text-sm font-bold'>کد تایید ارسال نشد؟</p>
+                    {/* resend code */}
+                    <div className="flex flex-row gap-2 items-center justify-between text-sm sm:text-base">
+                        <p className="text-[#56565F] font-bold">کد تایید ارسال نشد؟</p>
                         <button
                             disabled={timer > 0 || loading}
                             onClick={resendOtp}
-                            className={` ${timer > 0 ? "text-[#56565F]" : "text-[#1B82C2]"} text-sm font-bold`}
+                            className={`${timer > 0 ? "text-[#56565F]" : "text-[#1B82C2]"
+                                } font-bold transition-colors duration-200`}
                         >
-                            {timer > 0 ? `00:${timer}` : loading ? "در حال ارسال..." : "ارسال دوباره"}
+                            {timer > 0
+                                ? `00:${timer}`
+                                : loading
+                                    ? "در حال ارسال..."
+                                    : "ارسال دوباره"}
                         </button>
                     </div>
 
-                    <div className=''>
-                        <div className="w-full mx-auto">
-                            <PrimaryButton className="px-10" text="ورود به حساب" click={handelSignUpButton} />
+                    {/* login button + change number */}
+                    <div className="flex flex-col gap-3">
+                        <div className="w-full">
+                            <PrimaryButton
+                                className="w-full px-6 sm:px-10"
+                                text="ورود به حساب"
+                                click={handelSignUpButton}
+                            />
                         </div>
-                        <div className='flex gap-2 w-full mx-auto mt-2 justify-between'>
-                            <p className='text-[#56565F] text-sm font-bold'>شماره اشتباه است؟</p>
-                            <Link to={`/signIn?backUrl=${backUrl}`} className='text-[#1B82C2] text-sm font-bold'>تغییر شماره</Link>
+
+                        <div className="flex flex-row gap-2 items-center justify-between text-sm sm:text-base">
+                            <p className="text-[#56565F] font-bold">شماره اشتباه است؟</p>
+                            <Link
+                                to={`/signIn?backUrl=${backUrl}`}
+                                className="text-[#1B82C2] font-bold hover:underline"
+                            >
+                                تغییر شماره
+                            </Link>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -42,15 +42,17 @@ function SignIn() {
         }
     };
     return (
-        <div className='h-screen flex flex-col justify-center bg-cover bg-center' style={{ backgroundImage: `url(${AuthBG})` }}>
-            <div className='bg-white bg-opacity-70 w-1/3 border border-[#838383] border-opacity-25 rounded-xl mx-auto p-6'>
-                <img className='mx-auto' src={Logo} alt="logo image" />
+        <div className='min-h-screen flex flex-col justify-center bg-cover bg-center px-4 py-8 sm:px-6 md:px-10' style={{ backgroundImage: `url(${AuthBG})` }}>
+            <div className='bg-white bg-opacity-70 w-full max-w-md sm:max-w-lg md:max-w-md border border-[#838383]/25 rounded-2xl mx-auto p-4 sm:p-6 md:p-8 shadow-lg'>
+                <Link to={`/`} >
+                    <img className='mx-auto mb-5' src={Logo} alt="logo image" />
+                </Link>
                 <form className=' mx-auto w-full h-fit flex flex-col gap-5'>
                     <h1 className='text-xl font-bold text-[#27282C]'>ورود به حساب</h1>
-                    <TextFieild label="شماره همراه" value={auth.phoneNumber} onChange={handleTextfieldChange("phoneNumber")}/>
+                    <TextFieild label="شماره همراه" value={auth.phoneNumber} onChange={handleTextfieldChange("phoneNumber")} />
                     <div>
                         <div className="w-full mx-auto">
-                            <PrimaryButton text="ورود به حساب کاربری" click={handleLoginButton}/>
+                            <PrimaryButton text="ورود به حساب کاربری" click={handleLoginButton} />
                         </div>
                         <div className='flex gap-2 w-full mx-auto mt-2 justify-between'>
                             <p className='text-[#56565F] text-sm font-bold'>حساب کاربری ندارید؟</p>
