@@ -2,11 +2,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import { Navigation, Pagination } from "swiper/modules";
 import ProductCard from "../ProductCard";
 
-export default function ProductsSlider({ Title , color = "dark"}) {
+export default function ProductsSlider({ Title, id = "carousel1" , color = "dark" }) {
     const isDark = color === "dark";
     const textColor = isDark ? "text-white" : "text-black";
     const strokeColor = isDark ? "#FAFAFA" : "#111111";
@@ -16,7 +15,7 @@ export default function ProductsSlider({ Title , color = "dark"}) {
             <div className="flex items-center justify-between mb-6">
                 <h3 className={`text-lg xl:text-2xl font-bold ${textColor}`}>{Title}</h3>
                 <div className="flex gap-2">
-                    <button className={`custom-prev p-2 rounded-full transition hover:bg-black/10 
+                    <button className={`swiper-button-prev-${id} p-2 rounded-full transition hover:bg-black/10 
               [&.swiper-button-disabled]:opacity-50 
               [&.swiper-button-disabled]:brightness-75`}>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +30,7 @@ export default function ProductsSlider({ Title , color = "dark"}) {
                             </defs>
                         </svg>
                     </button>
-                    <button className={`custom-next p-2 rounded-full transition hover:bg-black/10 
+                    <button className={`swiper-button-next-${id} p-2 rounded-full transition hover:bg-black/10 
               [&.swiper-button-disabled]:opacity-50 
               [&.swiper-button-disabled]:brightness-75`}>
                         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,8 +52,8 @@ export default function ProductsSlider({ Title , color = "dark"}) {
             <Swiper
                 modules={[Navigation]}
                 navigation={{
-                    nextEl: ".custom-next",
-                    prevEl: ".custom-prev",
+                    nextEl: `.swiper-button-next-${id}`,
+                    prevEl: `.swiper-button-prev-${id}`,
                 }}
                 spaceBetween={16}
                 slidesPerView={1.2} // در موبایل
@@ -64,7 +63,7 @@ export default function ProductsSlider({ Title , color = "dark"}) {
                     1024: { slidesPerView: 5, spaceBetween: 24 }, // lg
                 }}
                 pagination={{ clickable: true }}
-                className="" 
+                className=""
             >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((i) => (
                     <SwiperSlide key={i}>
